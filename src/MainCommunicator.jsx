@@ -13,7 +13,7 @@ var DEFAULT_ROTATION = new Vector3(0, - Math.PI * 0.5, 0);
 var ANIMATED_POSITION = new Vector3(-0.62, 6.05, 5.58);
 var ANIMATED_ROTATION = new Vector3(Math.PI * 0.5, - Math.PI * 0.5, 0);
 
-export default function MainCommunicator( { pageSelected, setPageSelected, focusObjectFunc } )
+export default function MainCommunicator( { pageSelected, setPageSelected, focusObjectFunc, objectIsFocused } )
 {
     const communicatorRef           = useRef();                   //A reference to the group that's holding the communicator model.
     const [ position, setPosition ] = useState(DEFAULT_POSITION); //The current position of the communicator group.
@@ -41,7 +41,7 @@ export default function MainCommunicator( { pageSelected, setPageSelected, focus
 
     useEffect(() => {
         //When the selected page is the projects (the communicator object), then we should set this object as the focus of teh camera.
-        if (pageSelected == SelectedPage.Projects) focusObjectFunc(ANIMATED_POSITION, 0, 4); 
+        if (pageSelected == SelectedPage.Projects) focusObjectFunc(ANIMATED_POSITION, 0, 4.5); 
 
         updateRotation();
     }, [pageSelected])
@@ -67,7 +67,7 @@ export default function MainCommunicator( { pageSelected, setPageSelected, focus
 
             <group ref = { communicatorRef }>
                 <Communicator />
-                <ProjectsPage isFocused = { pageSelected == SelectedPage.Projects } onCloseCallback = { () => setPageSelected(SelectedPage.None) } />
+                <ProjectsPage isFocused = { pageSelected == SelectedPage.Projects && objectIsFocused } onCloseCallback = { () => setPageSelected(SelectedPage.None) } />
             </group>
     </>
 }

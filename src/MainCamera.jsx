@@ -7,7 +7,7 @@ import { SelectedPage }                from "./App.jsx"
 
 var Initialized = false;
 
-export default function MainCamera({ position, target, pageSelected = SelectedPage.None, setCanSelect })
+export default function MainCamera({ position, target, pageSelected = SelectedPage.None, setCanSelect, setObjectIsFocused })
 {
     const [ controlsEnabled, setControlsEnabled ] = useState(true); //This will allow us to choose when to allow the user to control the orbit controls and when we actually want to prevent that.
     const { camera, gl: { domElement } }          = useThree();
@@ -21,11 +21,14 @@ export default function MainCamera({ position, target, pageSelected = SelectedPa
             setIsMoving(true);
             setControlsEnabled(true);
 
+            if (pageSelected == SelectedPage.None) setObjectIsFocused(false); //No object is focused by the camera anymore
+
             gsap.timeline().to(camera.position,          { duration: 1, x: position.x, y: position.y, z: position.z});
             gsap.timeline().to(cameraRef.current.target, { duration: 1, x: target.x,   y: target.y,   z: target.z }, "<")
             .eventCallback("onComplete", () => { 
-                //Whenever the animation finishes, we make to make it possible to select or unselect again and also if there's a nobject selected currently we disable orbital control.
-                if (pageSelected != SelectedPage.None) setControlsEnabled(false); 
+                //Whenever the animation finishes, we make to make it possible to select or unselect again and also if there's an object selected currently we disable orbital control.
+                //Also We make sure to specify that an object is currently focused by the camera.
+                if (pageSelected != SelectedPage.None) { setControlsEnabled(false); setObjectIsFocused(true); }
                 setIsMoving(false);
                 setCanSelect(true);
             });

@@ -7,11 +7,11 @@ import { Vector3 } from "three";
 const DISPLAY_POSITION = new Vector3(-16.5, 6, -13.5);
 
 //This is the publicity display where the about me page will be shown up.
-export default function MainPublicityDisplay( {pageSelected, setPageSelected, focusObjectFunc} )
+export default function MainPublicityDisplay( {pageSelected, setPageSelected, focusObjectFunc, objectIsFocused} )
 {
     useEffect(() => {
         //When the selected page is the projects (the communicator object), then we should set this object as the focus of teh camera.
-        if (pageSelected == SelectedPage.AboutMe) focusObjectFunc(DISPLAY_POSITION, -7, 0); 
+        if (pageSelected == SelectedPage.AboutMe) focusObjectFunc(DISPLAY_POSITION, -10, 0); 
     }, [pageSelected])
 
     return <>
@@ -30,6 +30,6 @@ export default function MainPublicityDisplay( {pageSelected, setPageSelected, fo
             <meshBasicMaterial opacity = { 0 } transparent = { true } color={"red"} />
         </mesh>
 
-        <AboutMe isFocused = { pageSelected == SelectedPage.AboutMe } onCloseCallback = { () => setPageSelected(SelectedPage.None) } />
+        <AboutMe isFocused = { pageSelected == SelectedPage.AboutMe && objectIsFocused } onCloseCallback = { () => setPageSelected(SelectedPage.None) } />
     </>
 }

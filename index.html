@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <div id="LoadingScreen" class="text-4xl text-red-600 font-SpaceMono z-30" >
+    <div id="loadingScreen" class="text-3xl text-white font-SpaceMono z-30" >
       <div>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="display: none;">
           <symbol id="wave">
@@ -23,7 +23,6 @@
             <div class="percent">
               <div id="loadPercentage">0 %</div>
             </div>
-            <!-- <button>START</button> -->
             <div id="water" class="water">
               <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
                 <use xlink:href="#wave"></use>
@@ -34,6 +33,7 @@
             </div>
           </div>
         </div>
+        <div id="loadingText" class="flex justify-center items-center text-center w-[100%] h-[100%] mt-[150px] absolute" >Preparing your drink...</div>
       </div>
     </div>
     <div id="root" class="z-20"></div>

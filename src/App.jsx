@@ -17,10 +17,11 @@ export const SelectedPage = {
 
 export default function App({ defaultCameraPosition })
 {
-    const [ canSelect, setCanSelect]            = useState(true);                  //This determine whether the user will be able to select a page/object to focus or not.
-    const [ pageSelected, setPageSelected ]     = useState(SelectedPage.None);     //This help us determine what page is currently in focus.
-    const [ cameraPosition, setCameraPosition ] = useState(defaultCameraPosition); //The current position of the camera.
-    const [ cameraTarget, setCameraTarget]      = useState( { x:0, y:0, z:0} );    //Where the camera is currently looking at.
+    const [ canSelect     , setCanSelect]         = useState(true);                  //This determine whether the user will be able to select a page/object to focus or not.
+    const [ pageSelected  , setPageSelected ]     = useState(SelectedPage.None);     //This help us determine what page is currently in focus.
+    const [ cameraPosition, setCameraPosition ]   = useState(defaultCameraPosition); //The current position of the camera.
+    const [ cameraTarget  , setCameraTarget]      = useState( { x:0, y:0, z:0} );    //Where the camera is currently looking at.
+    const [ objectIsFocused, setObjectIsFocused ] = useState(false);
     
     //Set the object that we want to focus, when null is passed then the camera will just get back to its standard position.
     var focusObject = (objectSelectedPos, xOffset = 0, zOffset = 0) => {
@@ -49,10 +50,10 @@ export default function App({ defaultCameraPosition })
                 
                 <ambientLight intensity = { 0.05 } />
 
-                <MainCamera position = { cameraPosition } target = { cameraTarget } pageSelected = { pageSelected } setCanSelect = { setCanSelect } />
+                <MainCamera position = { cameraPosition } target = { cameraTarget } pageSelected = { pageSelected } setCanSelect = { setCanSelect } setObjectIsFocused = { (state) => setObjectIsFocused(state) } />
                 <MainCantina />
-                <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject }  />
-                <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } />
+                <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused }  />
+                <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } />
                 <MainMenuStand        setPageSelected = { selectPage } />
 
                 {/* <mesh position-y = { -1 } rotation-x = { - Math.PI * 0.5 } scale = { 100 } receiveShadow>

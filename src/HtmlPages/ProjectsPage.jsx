@@ -34,7 +34,7 @@ var ProProjects = [{
                   "- Implemented different APIs to track the player progression and game statistics."],
     gitLink    : null
  }, {
-    title      : "Amilcar Technologies: Game developer intern",
+    title      : "Amilcar Technologies: Game dev intern",
     period     : "01/2021 - 04/2021",
     videoLink  : "https://www.youtube.com/embed/VsLKklKha0M?rel=0",
     techUsed   : ["Unity", "C#"],
