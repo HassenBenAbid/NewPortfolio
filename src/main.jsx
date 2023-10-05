@@ -31,6 +31,7 @@ function Loading()
       clearInterval(progressInterval);
       progressInterval = setInterval(() => {
         countProgress++;
+        countProgress = Math.min(countProgress, 100);
         percentageText.innerHTML = countProgress + " %"; 
         water.style.transform    ='translate(0'+','+( 120 - countProgress)+'%)';
         if (countProgress == progress)

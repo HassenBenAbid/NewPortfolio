@@ -30,6 +30,14 @@ export default function App({ started = false})
         volume: DefaultParams.UI_SOUND_VOLUME
     });
 
+    const [ playAmbient, ambientData ] = useSound("./Sound/Ambient.mp3", {
+        volume: DefaultParams.AMBIENT_VOLUME,
+    });
+
+    const [ playBGMusic, musicData ] = useSound("./Sound/CantinaMusic.mp3", {
+        volume: DefaultParams.BG_MUSIC_VOLUME,
+    });
+
     //Set the object that we want to focus, when null is passed then the camera will just get back to its standard position.
     var focusObject = (objectSelectedPos, xOffset = 0, zOffset = 0) => {
         if (!started) return;
@@ -56,6 +64,11 @@ export default function App({ started = false})
         if (started) {
             setCanSelect(false);
             setCameraPosition(DefaultParams.DEFAULT_CAMERA_POSITION);
+            ambientData.autoplay = true;
+            ambientData.loop = true;
+            ambientData.sound.loop = true;
+            playAmbient();
+            playBGMusic();
         }
     }, [started]);
 

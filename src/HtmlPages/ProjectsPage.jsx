@@ -200,7 +200,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                              active:translate-y-2  active:[box-shadow:0_4px_0_0_#c5262b,0_6px_0_0_#c5262b41]
                              active:border-b-[0px]
                              transition-all duration-150 [box-shadow:0_8px_0_0_#c5262b,0_13px_0_0_#c5262b41]
-                             mx-20 my-10 py-5' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
+                             mx-20 my-7 py-2.5' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
                     <span className ='flex flex-col justify-center items-center h-[50px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
             </div>
 
