@@ -23,8 +23,8 @@ export default function MainCamera({ position, target, pageSelected = SelectedPa
 
             if (pageSelected == SelectedPage.None) setObjectIsFocused(false); //No object is focused by the camera anymore
 
-            gsap.timeline().to(camera.position,          { duration: 1, x: position.x, y: position.y, z: position.z});
-            gsap.timeline().to(cameraRef.current.target, { duration: 1, x: target.x,   y: target.y,   z: target.z }, "<")
+            gsap.timeline().to(camera.position,          { duration: 0.6, x: position.x, y: position.y, z: position.z });
+            gsap.timeline().to(cameraRef.current.target, { duration: 0.6, x: target.x,   y: target.y,   z: target.z }, "<")
             .eventCallback("onComplete", () => { 
                 //Whenever the animation finishes, we make to make it possible to select or unselect again and also if there's an object selected currently we disable orbital control.
                 //Also We make sure to specify that an object is currently focused by the camera.

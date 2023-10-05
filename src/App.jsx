@@ -7,6 +7,8 @@ import MainCommunicator from "./MainCommunicator.jsx";
 import MainCamera       from "./MainCamera.jsx";
 import MainMenuStand    from "./MainMenuStand.jsx";
 import MainPublicityDisplay from "./MainPublicityDisplay.jsx";
+import DefaultParams from "./DefaultParams.js";
+import useSound from "use-sound";
 
 //An enum that help us determine what specifc page is currently selected.
 export const SelectedPage = {
@@ -15,20 +17,26 @@ export const SelectedPage = {
     Projects: 2
 }
 
-export default function App({ defaultCameraPosition })
+export default function App({ started = false})
 {
-    const [ canSelect     , setCanSelect]         = useState(true);                  //This determine whether the user will be able to select a page/object to focus or not.
-    const [ pageSelected  , setPageSelected ]     = useState(SelectedPage.None);     //This help us determine what page is currently in focus.
-    const [ cameraPosition, setCameraPosition ]   = useState(defaultCameraPosition); //The current position of the camera.
-    const [ cameraTarget  , setCameraTarget]      = useState( { x:0, y:0, z:0} );    //Where the camera is currently looking at.
+    const [ canSelect     , setCanSelect]         = useState(true);                                   //This determine whether the user will be able to select a page/object to focus or not.
+    const [ pageSelected  , setPageSelected ]     = useState(SelectedPage.None);                      //This help us determine what page is currently in focus.
+    const [ cameraPosition, setCameraPosition ]   = useState(DefaultParams.ON_START_CAMERA_POSITION); //The current position of the camera.
+    const [ cameraTarget  , setCameraTarget]      = useState( { x:0, y:0, z:0} );                     //Where the camera is currently looking at.
     const [ objectIsFocused, setObjectIsFocused ] = useState(false);
-    
+
+    //The sound that gets played whenever an object is selected to be focused.
+    const [ playObjectFocusedSound ] = useSound("./Sound/FocusObjectClick.wav", {
+        volume: DefaultParams.UI_SOUND_VOLUME
+    });
+
     //Set the object that we want to focus, when null is passed then the camera will just get back to its standard position.
     var focusObject = (objectSelectedPos, xOffset = 0, zOffset = 0) => {
+        if (!started) return;
         setCanSelect(false);
 
         setCameraTarget(pageSelected != SelectedPage.None ? objectSelectedPos : new Vector3(0, 0, 0));
-        setCameraPosition(pageSelected != SelectedPage.None ? { x: objectSelectedPos.x + xOffset, y: objectSelectedPos.y, z: objectSelectedPos.z + zOffset} : defaultCameraPosition);
+        setCameraPosition(pageSelected != SelectedPage.None ? { x: objectSelectedPos.x + xOffset, y: objectSelectedPos.y, z: objectSelectedPos.z + zOffset} : DefaultParams.DEFAULT_CAMERA_POSITION);
     };
 
     //Set what page is currently selected.
@@ -44,6 +52,13 @@ export default function App({ defaultCameraPosition })
         if (pageSelected == SelectedPage.None) focusObject(null);
     }, [pageSelected]);
 
+    useEffect(() => {
+        if (started) {
+            setCanSelect(false);
+            setCameraPosition(DefaultParams.DEFAULT_CAMERA_POSITION);
+        }
+    }, [started]);
+
     return <>
                 <Perf    />
                 <Effects />
@@ -52,14 +67,9 @@ export default function App({ defaultCameraPosition })
 
                 <MainCamera position = { cameraPosition } target = { cameraTarget } pageSelected = { pageSelected } setCanSelect = { setCanSelect } setObjectIsFocused = { (state) => setObjectIsFocused(state) } />
                 <MainCantina />
-                <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused }  />
-                <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } />
+                <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
+                <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
                 <MainMenuStand        setPageSelected = { selectPage } />
-
-                {/* <mesh position-y = { -1 } rotation-x = { - Math.PI * 0.5 } scale = { 100 } receiveShadow>
-                    <planeGeometry />
-                    <meshStandardMaterial color = "sandybrown" />
-                </mesh> */}
 
                 <mesh position = { [0, -11.05, 0] } scale = { [45, 20, 45] } receiveShadow>
                     <boxGeometry />

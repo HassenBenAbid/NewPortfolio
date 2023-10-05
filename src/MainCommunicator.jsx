@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Vector3 }      from "three";
 import { gsap }         from "gsap";
 import ProjectsPage     from "./HtmlPages/ProjectsPage.jsx";
-import Communicator     from "./ModelsJs/Communicator.jsx";
+import Communicator     from "./ModelsJS/Communicator.jsx";
 import { SelectedPage } from "./App.jsx"
 
 //The default position and rotation of the communicator group.
@@ -13,7 +13,7 @@ var DEFAULT_ROTATION = new Vector3(0, - Math.PI * 0.5, 0);
 var ANIMATED_POSITION = new Vector3(-0.62, 6.05, 5.58);
 var ANIMATED_ROTATION = new Vector3(Math.PI * 0.5, - Math.PI * 0.5, 0);
 
-export default function MainCommunicator( { pageSelected, setPageSelected, focusObjectFunc, objectIsFocused } )
+export default function MainCommunicator( { pageSelected, setPageSelected, focusObjectFunc, objectIsFocused, focusedSound } )
 {
     const communicatorRef           = useRef();                   //A reference to the group that's holding the communicator model.
     const [ position, setPosition ] = useState(DEFAULT_POSITION); //The current position of the communicator group.
@@ -60,7 +60,7 @@ export default function MainCommunicator( { pageSelected, setPageSelected, focus
                   position      = { [-0.62, 5, 5.58] } 
                   onPointerOver = { () => setIsHovered(true)  }
                   onPointerOut  = { () => setIsHovered(false) }
-                  onPointerDown = { () => setPageSelected(SelectedPage.Projects) }>
+                  onPointerDown = { () => { focusedSound(); setPageSelected(SelectedPage.Projects); } }>
                 <boxGeometry />
                 <meshBasicMaterial opacity = { 0 } transparent = { true }/>
             </mesh>

@@ -1,6 +1,8 @@
 import { Html } from "@react-three/drei";
 import Project from "./Project";
 import { useEffect, useState } from "react";
+import useSound from "use-sound";
+import DefaultParams from "../DefaultParams";
 
 const BLINKING_INTERVAL = 500;
 
@@ -95,6 +97,10 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
     const [ projectsState, setProjectsState ] = useState(ProjectsState.None); 
     const [ showText, setShowText ]           = useState(true); //This will help us set the blinking text effect.
 
+    const [ playCommunicatorSound ] = useSound("./Sound/CommunicatorClick.wav", {
+        volume: DefaultParams.UI_SOUND_VOLUME
+    });
+
     //Update the state in which this page is in.
     const UpdateProjectsState = (state) => {
         switch (state) {
@@ -152,7 +158,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                 active:border-b-[0px]
                 transition-all duration-150 [box-shadow:0_10px_0_0_#c5262b,0_15px_0_0_#c5262b41]
                 border-b-[1px] border-communicator-red' 
-                onClick = { () => UpdateProjectsState(ProjectsState.Professional) }>    
+                onClick = { () => { playCommunicatorSound(); UpdateProjectsState(ProjectsState.Professional) } }>    
 		            <span className='flex flex-col justify-center items-center text-communicator-white px-5 py-5 font-bold text-5xl'>Professional</span>
 	            </div>
 
@@ -163,7 +169,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                 active:border-b-[0px]
                 transition-all duration-150 [box-shadow:0_10px_0_0_#c5262b,0_15px_0_0_#c5262b41]
                 border-b-[1px] border-communicator-red' 
-                onClick = { () => UpdateProjectsState(ProjectsState.Personal) }>
+                onClick = { () => { playCommunicatorSound(); UpdateProjectsState(ProjectsState.Personal); }  }>
 		            <span className='flex flex-col justify-center items-center text-communicator-white px-16 py-5 font-bold text-5xl'>Personal</span>
 	            </div>
             </div>
@@ -178,7 +184,8 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                                                                                 techUsed    = { value.techUsed }
                                                                                 period      = { value.period } 
                                                                                 description = { value.description } 
-                                                                                gitLink     = { value.gitLink } /> })
+                                                                                gitLink     = { value.gitLink } 
+                                                                                clickSound  = { playCommunicatorSound } /> })
                                                       : null
                 }
             </div>
@@ -193,7 +200,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                              active:translate-y-2  active:[box-shadow:0_4px_0_0_#c5262b,0_6px_0_0_#c5262b41]
                              active:border-b-[0px]
                              transition-all duration-150 [box-shadow:0_8px_0_0_#c5262b,0_13px_0_0_#c5262b41]
-                             mx-20 my-10 py-5' onClick = { () =>  UpdateProjectsState(ProjectsState.None)}>
+                             mx-20 my-10 py-5' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
                     <span className ='flex flex-col justify-center items-center h-[50px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
             </div>
 

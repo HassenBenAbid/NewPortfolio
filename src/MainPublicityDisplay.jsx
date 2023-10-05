@@ -7,7 +7,7 @@ import { Vector3 } from "three";
 const DISPLAY_POSITION = new Vector3(-16.5, 6, -13.5);
 
 //This is the publicity display where the about me page will be shown up.
-export default function MainPublicityDisplay( {pageSelected, setPageSelected, focusObjectFunc, objectIsFocused} )
+export default function MainPublicityDisplay( {pageSelected, setPageSelected, focusObjectFunc, objectIsFocused, focusedSound} )
 {
     useEffect(() => {
         //When the selected page is the projects (the communicator object), then we should set this object as the focus of teh camera.
@@ -25,7 +25,7 @@ export default function MainPublicityDisplay( {pageSelected, setPageSelected, fo
         {/* This will be the display "hitbox". */}
         <mesh scale         = { [0.5, 4.8, 3.5] } 
               position      = { [DISPLAY_POSITION.x - 0.5, DISPLAY_POSITION.y, DISPLAY_POSITION.z] } 
-              onPointerDown = { () => setPageSelected(SelectedPage.AboutMe) }>
+              onPointerDown = { () => { focusedSound(); setPageSelected(SelectedPage.AboutMe); } }>
             <boxGeometry />
             <meshBasicMaterial opacity = { 0 } transparent = { true } color={"red"} />
         </mesh>

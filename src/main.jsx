@@ -1,10 +1,11 @@
-import { React, StrictMode, useEffect } from "react";
+import { React, StrictMode, useEffect, useState } from "react";
 import ReactDOM                         from "react-dom/client";
 import App                              from "./App.jsx"
 import { Canvas }                       from "@react-three/fiber";
 import { Preload, useProgress }         from "@react-three/drei";
 import * as THREE from 'three';
 import "./index.css"
+import DefaultParams from "./DefaultParams.js";
 
 var loadingScreen  = document.getElementById("loadingScreen");
 var percentageText = document.getElementById("loadPercentage"); 
@@ -14,22 +15,16 @@ var countProgress  = 0;
 var progressInterval;
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
-const defaultCameraPosition = {x: 0, y: 20, z: 50};
 
 root.render(
-    <StrictMode>
-      <Loading />
-      <Canvas camera = { { fov: 45, position: [defaultCameraPosition.x, defaultCameraPosition.y, defaultCameraPosition.z] }  } shadows = { { type: THREE.PCFShadowMap } } >
-        <App defaultCameraPosition = { defaultCameraPosition } />
-        <Preload all />
-      </Canvas>
-    </StrictMode>
+  <Loading />
 );
 
 //This small component will take care of showing the current percentage of the loading and making sure that it's a smooth animation.
 function Loading()
 {
     const { progress } = useProgress();
+    const [ started, setStarted ] = useState(false);
 
     useEffect(() => {
       //We make sure that the transition btw 0 -> 100 is smooth.
@@ -49,11 +44,17 @@ function Loading()
             percentageText.innerHTML       = "START";
             percentageText.style.fontStyle = "bold";
             percentageText.style.cursor    = "pointer";
-            percentageText.onclick = () => { loadingScreen.classList.add("fadeOut") };
+            percentageText.classList.add("hover:text-[#F56C22]");
+            percentageText.onclick = () => { loadingScreen.classList.add("fadeOut"); setStarted(true); };
           }
         } 
       }, 5);
     }, [progress])
 
-    return <></>
+    return <StrictMode>
+      <Canvas camera = { { fov: 45, position: [DefaultParams.ON_START_CAMERA_POSITION.x, DefaultParams.ON_START_CAMERA_POSITION.y, DefaultParams.ON_START_CAMERA_POSITION.z] }  } shadows = { { type: THREE.PCFShadowMap } } >
+        <App started = { started } />
+        <Preload all />
+      </Canvas>
+    </StrictMode>
 }

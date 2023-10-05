@@ -1,13 +1,19 @@
 import { Html } from "@react-three/drei";
+import useSound from "use-sound";
+import DefaultParams from "../DefaultParams";
 
 export default function AboutMe( { isFocused, onCloseCallback} )
 {
-    return <Html className   = " w-[560px] h-[800px] bg-[#DFDFDE] select-none" 
+    const [ playPublicityDisplaySound ] = useSound("./Sound/PublicityDisplayClick.wav", {
+        volume: DefaultParams.UI_SOUND_VOLUME
+    });
+
+    return <Html className   = " w-[730px] h-[1040px] bg-[#DFDFDE] select-none" 
                  occlude     = "blending" 
                  zIndexRange = { isFocused ? [10000, 0] : [0, 0] /* We want to make sure that when the page isn't focused it doesn't take priority on the z index. */ } 
-                 position    = { [-16.9,  5.9, -13.5] }
+                 position    = { [-16.9,  5.925, -13.5] }
                  rotation    = { [0, Math.PI * -0.5 , 0] }
-                 scale       = { 0.25 }
+                 scale       = { 0.19 }
                  transform>
     
 
@@ -15,14 +21,14 @@ export default function AboutMe( { isFocused, onCloseCallback} )
             { isFocused ?
                 <div> 
                     {/* This will allow the user to get back to the main scene. */}
-                    <div className="flex flex-row h-[50px]" >
-                        <div className="flex bg-[#4FAA6D] w-[420px] border-b-[15px] border-[#DFDFDE]"></div>
-                        <div className="flex bg-[#FE0000] text-[#DFDFDE] w-[140px] cursor-pointer font-SpaceMono font-bold items-center justify-center text-2xl border-b-[15px] border-[#DFDFDE]
+                    <div className="flex flex-row h-[60px]" >
+                        <div className="flex bg-[#4FAA6D] w-[505px] border-b-[15px] border-b-[#DFDFDE]"></div>
+                        <div className="flex bg-[#FE0000] text-[#DFDFDE] w-[225px] cursor-pointer font-SpaceMono font-bold items-center justify-center text-2xl border-b-[15px] border-b-[#DFDFDE]
                             hover:border-b-[0px]
-                            translation-all duration-150" onClick = { () => onCloseCallback() }>Back</div>
+                            translation-all duration-150" onClick = {  () => { playPublicityDisplaySound(); onCloseCallback(); } }>Back</div>
                     </div>
                     
-                    <div className = "mx-2 mt-6 font-bold text-[#4FAA6D] text-xl font-SpaceMono border-l-4 border-[#4FAA6D]" > 
+                    <div className = "mx-2 mt-6 font-bold text-[#4FAA6D] text-[25px] font-SpaceMono border-l-4 border-[#4FAA6D]" > 
                         <div className=" ml-2" >
                             Hello there! <br /> <br /> 
                             I'm Hassen, an enthusiastic and dynamic software and game programmer. My journey into the realm of programming began at a young age, igniting my unwavering passion. 
@@ -38,23 +44,23 @@ export default function AboutMe( { isFocused, onCloseCallback} )
                     </div>
 
                     {/* Clicking on this will allow the user to download my resume. */}
-                    <a className="text-5xl text-[#4FAA6D] font-bold font-SpaceMono mt-14 mb-1 flex flex-col justify-center items-center border-x-[100px] border-[#4FAA6D]
-                      hover:border-x-[180px]
-                      translation-all duration-150" href="https://www.linkedin.com/in/hassen-ben-abid/" target="_blank"> 
+                    <a className="text-5xl text-[#4FAA6D] font-bold font-SpaceMono mt-14 mb-1 flex flex-col justify-center items-center border-x-[150px] border-[#4FAA6D]
+                      hover:border-x-[240px]
+                      translation-all duration-150" href="https://www.linkedin.com/in/hassen-ben-abid/" target="_blank" onClick = { () => playPublicityDisplaySound() }> 
                         Resume 
                     </a>
                 </div>  
             : <div>
-                <div className = "bg-[#FE0000] w-[560px] h-[80px] mb-[50px]"></div>
-                <div className = "flex justify-center text-[60px] font-SpaceMono font-bold text-[#FE0000] " >
+                <div className = "bg-[#FE0000] w-[730px] h-[80px] mb-[50px]"></div>
+                <div className = "flex justify-center text-[75px] font-SpaceMono font-bold text-[#FE0000] " >
                     HASSEN'S CANTINA
                 </div>
 
-                <div className = "flex justify-center font-SpaceMono font-bold text-[25px] mb-[50px] text-[#FE0000]">
+                <div className = "flex justify-center font-SpaceMono font-bold text-[30px] mb-[50px] text-[#FE0000]">
                     Where you can get the worst drink in town!
                 </div>
 
-                <svg className="w-[100px] h-[100px] ml-[250px] mt-10 text-gray-800 dark:text-[#FE0000]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <svg className="w-[250px] h-[100px] ml-[250px] mt-10 text-gray-800 dark:text-[#FE0000]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
 
@@ -62,11 +68,11 @@ export default function AboutMe( { isFocused, onCloseCallback} )
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
 
-                <svg className="w-[150px] h-[150px] ml-[350px] mt-2 text-gray-800 dark:text-[#FE0000]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <svg className="w-[300px] h-[150px] ml-[350px] mt-2 text-gray-800 dark:text-[#FE0000]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
 
-                <div className = "bg-[#FE0000] w-[560px] h-[40px] mt-[50px]"></div>
+                <div className = "bg-[#FE0000] w-[730px] h-[190px] mt-[50px]"></div>
 
             </div> }
         </div>

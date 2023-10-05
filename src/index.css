@@ -120,6 +120,7 @@
 
 .fadeOut
 {
+  pointer-events: none;
   z-index: 0;
   animation: fadeOutAnim 0.15s ease-out forwards;
   transition: z-index ;
