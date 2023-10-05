@@ -1,5 +1,5 @@
 import { useRef }      from "react";
-import MenuStand       from "./ModelsJs/MenuStand.jsx"
+import MenuStand       from "./modelsjs/MenuStand.jsx"
 import { useControls } from "leva";
 import MenuPage        from "./HtmlPages/MenuPage.jsx";
 

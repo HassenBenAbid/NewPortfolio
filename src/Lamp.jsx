@@ -14,7 +14,7 @@ export default function Lamp( { position = [ 0, 0, 0], emissiveColor = [0, 0, 1]
 
             <pointLight color     = { [0.3, 0.6, 1] } 
                         distance  = { 50 } 
-                        intensity = { 10 }/>
+                        intensity = { 40 }/>
     </mesh> 
 
     </>

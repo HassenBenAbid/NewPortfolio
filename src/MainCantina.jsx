@@ -1,4 +1,4 @@
-import Cantina      from "./ModelsJs/Cantina";
+import Cantina      from "./modelsjs/Cantina";
 import Lamp         from "./Lamp.jsx";
 import { Sparkles } from "@react-three/drei";
 import StreetLight  from "./StreetLight.jsx";
@@ -35,7 +35,7 @@ export default function MainCantina()
             <pointLight color    = { [1, 1, 1] }  
                         distance = { 10 } 
                         position = { [ 0, 0, 0 ] }
-                        intensity = { 5 }/>
+                        intensity = { 15 }/>
         </mesh>
     </>
 }

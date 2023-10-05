@@ -141,10 +141,10 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
     }
 
     return <>
-        <Html className   = "CommunicatorPage overflow-auto scrollbar-none select-none" 
+        <Html className   = "CommunicatorPage overflow-auto scrollbar-none select-none w-[1085px] h-[1235px]" 
           zIndexRange = { isFocused ? [10000, 2] : [1, 1] /* We want to make sure that when the page isn't focused it doesn't take priority on the z index. */ } 
           occlude     = "blending" 
-          scale       = {0.05} 
+          scale       = {0.0521} 
           rotation    = { [ Math.PI * -0.5, 0, Math.PI * 0.5] }  
           position    = { [0, 1.21, 0] } 
           style       = { {backgroundImage: `url("./UI/CommunicatorBackground.png")`} }

@@ -9,7 +9,7 @@ export default function MenuPage( { setPageSelected } )
         volume: DefaultParams.UI_SOUND_VOLUME
     });
 
-    return <Html className = "MenuStandPage select-none" 
+    return <Html className = "select-none w-[1125] h-[1600px]" 
                  occlude   = "blending" 
                  zIndexRange = { [2, 2] } 
                  scale     = { 0.11 }
@@ -18,7 +18,7 @@ export default function MenuPage( { setPageSelected } )
                  style     = { {backgroundColor: "black"} }
                  transform>
 
-        <div className="flex flex-col text-10xl text-white font-bold mr-9 items-center justify-center font-ChalkFont" >
+        <div className="flex flex-col text-[177px] text-white font-bold mr-9 items-center justify-center font-ChalkFont" >
             <button className="flex my-12 after:content-[''] after:bg-white after:h-8 after:left-0 after:w-[0%] after:bottom-[1270px] after:duration-200 after:hover:w-[95%] after:absolute"
                     onClick = { () =>  { playBoardClickSound(); setPageSelected(SelectedPage.AboutMe); } }>
                 About me

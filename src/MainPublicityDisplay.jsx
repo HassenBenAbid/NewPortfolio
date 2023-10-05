@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import AboutMe from "./HtmlPages/AboutMe.jsx";
-import PublicityDisplay from "./ModelsJs/PublicityDisplay.jsx";
+import PublicityDisplay from "./modelsjs/PublicityDisplay.jsx";
 import { SelectedPage } from "./App.jsx";
 import { Vector3 } from "three";
 

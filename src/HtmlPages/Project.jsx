@@ -7,7 +7,7 @@ export default function Project({ title, period, videoLink, techUsed = [], descr
                 {title}
             </li>
             <div className="border-communicator-red border-l-[6px] ml-[10px] pl-9 ">
-                <h2 className="text-[33px]" >{period}</h2>
+                <h2 className="text-[35px]" >{period}</h2>
                 <div className="mt-8 aspect-video w-3/4">
                     <iframe className="rounded-lg w-full h-full p-2" src={videoLink} allowFullScreen></iframe>
 
@@ -18,7 +18,7 @@ export default function Project({ title, period, videoLink, techUsed = [], descr
                 </div>
                 </div>
                 
-                <div className="text-[33px]">{description.map((value, index) => {
+                <div className="text-[35px]">{description.map((value, index) => {
                     return <div key = { index }> {value} <br /> </div> 
                 })}</div>
 

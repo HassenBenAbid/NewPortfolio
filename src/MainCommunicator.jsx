@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Vector3 }      from "three";
 import { gsap }         from "gsap";
 import ProjectsPage     from "./HtmlPages/ProjectsPage.jsx";
-import Communicator     from "./ModelsJS/Communicator.jsx";
+import Communicator     from "./modelsjs/Communicator.jsx";
 import { SelectedPage } from "./App.jsx"
 
 //The default position and rotation of the communicator group.
