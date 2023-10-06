@@ -9,6 +9,7 @@ import MainMenuStand    from "./MainMenuStand.jsx";
 import MainPublicityDisplay from "./MainPublicityDisplay.jsx";
 import DefaultParams from "./DefaultParams.js";
 import useSound from "use-sound";
+import BackggroundSound from "./BackgroundSound.jsx";
 
 //An enum that help us determine what specifc page is currently selected.
 export const SelectedPage = {
@@ -28,14 +29,6 @@ export default function App({ started = false})
     //The sound that gets played whenever an object is selected to be focused.
     const [ playObjectFocusedSound ] = useSound("./Sound/FocusObjectClick.wav", {
         volume: DefaultParams.UI_SOUND_VOLUME
-    });
-
-    const [ playAmbient, ambientData ] = useSound("./Sound/Ambient.mp3", {
-        volume: DefaultParams.AMBIENT_VOLUME,
-    });
-
-    const [ playBGMusic, musicData ] = useSound("./Sound/CantinaMusic.mp3", {
-        volume: DefaultParams.BG_MUSIC_VOLUME,
     });
 
     //Set the object that we want to focus, when null is passed then the camera will just get back to its standard position.
@@ -64,17 +57,14 @@ export default function App({ started = false})
         if (started) {
             setCanSelect(false);
             setCameraPosition(DefaultParams.DEFAULT_CAMERA_POSITION);
-            ambientData.autoplay = true;
-            ambientData.loop = true;
-            ambientData.sound.loop = true;
-            playAmbient();
-            playBGMusic();
         }
     }, [started]);
 
     return <>
                 <Perf    />
                 <Effects />
+
+                {/* <BackggroundSound appStarted = { started } /> */}
                 
                 <ambientLight intensity = { 0.05 } />
 

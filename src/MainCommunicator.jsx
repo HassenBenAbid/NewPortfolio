@@ -4,6 +4,7 @@ import { gsap }         from "gsap";
 import ProjectsPage     from "./HtmlPages/ProjectsPage.jsx";
 import Communicator     from "./modelsjs/Communicator.jsx";
 import { SelectedPage } from "./App.jsx"
+import { BakeShadows } from "@react-three/drei";
 
 //The default position and rotation of the communicator group.
 var DEFAULT_POSITION = new Vector3(-0.62, 3.55, 5.58);
@@ -67,6 +68,7 @@ export default function MainCommunicator( { pageSelected, setPageSelected, focus
 
             <group ref = { communicatorRef }>
                 <Communicator />
+                <BakeShadows />
                 <ProjectsPage isFocused = { pageSelected == SelectedPage.Projects && objectIsFocused } onCloseCallback = { () => setPageSelected(SelectedPage.None) } />
             </group>
     </>

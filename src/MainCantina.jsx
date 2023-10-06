@@ -1,6 +1,6 @@
 import Cantina      from "./modelsjs/Cantina";
 import Lamp         from "./Lamp.jsx";
-import { Sparkles } from "@react-three/drei";
+import { BakeShadows, Sparkles } from "@react-three/drei";
 import StreetLight  from "./StreetLight.jsx";
 
 //This is the main object of the scene (cantina/bar + street).
@@ -9,14 +9,15 @@ export default function MainCantina()
     return <>
         <Cantina position = { [ 0, -1.25, 0 ] }
                  rotation = { [ 0, Math.PI * -0.5, 0 ] } />
+        <BakeShadows />
 
         <StreetLight />
 
-        <Sparkles position = { [1, 8, -16.5] } 
+        {/* <Sparkles position = { [1, 8, -16.5] } 
                   size     = { 5 } 
                   scale    = { [6, 12, 8] } 
                   count    = { 40 }
-                  speed    = { 0.4 } />
+                  speed    = { 0.4 } /> */}
 
         <Lamp position = { [ -14.59, 10.01, 12.03 ] } />
         <Lamp position = { [  14.59, 10.01, 12.03 ] } />

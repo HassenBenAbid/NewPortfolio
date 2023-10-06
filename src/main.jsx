@@ -2,7 +2,7 @@ import { React, StrictMode, useEffect, useState } from "react";
 import ReactDOM                         from "react-dom/client";
 import App                              from "./App.jsx"
 import { Canvas }                       from "@react-three/fiber";
-import { Preload, useProgress }         from "@react-three/drei";
+import { AdaptiveDpr, Bvh, PerformanceMonitor, Preload, useProgress }         from "@react-three/drei";
 import * as THREE from 'three';
 import "./index.css"
 import DefaultParams from "./DefaultParams.js";
@@ -23,8 +23,9 @@ root.render(
 //This small component will take care of showing the current percentage of the loading and making sure that it's a smooth animation.
 function Loading()
 {
-    const { progress } = useProgress();
+    const { progress }            = useProgress();
     const [ started, setStarted ] = useState(false);
+    const [ dpr, setDpr ]         = useState(1);
 
     useEffect(() => {
       //We make sure that the transition btw 0 -> 100 is smooth.
@@ -53,9 +54,17 @@ function Loading()
     }, [progress])
 
     return <StrictMode>
-      <Canvas camera = { { fov: 45, position: [DefaultParams.ON_START_CAMERA_POSITION.x, DefaultParams.ON_START_CAMERA_POSITION.y, DefaultParams.ON_START_CAMERA_POSITION.z] }  } shadows = { { type: THREE.PCFShadowMap } } >
+      <Canvas dpr         = { dpr } 
+              camera      = { { fov: 45, position: [DefaultParams.ON_START_CAMERA_POSITION.x, DefaultParams.ON_START_CAMERA_POSITION.y, DefaultParams.ON_START_CAMERA_POSITION.z] }  } 
+              shadows     = { { type: THREE.PCFShadowMap } } 
+              performance = { { min: 0.1 } }>
+        <PerformanceMonitor onIncline = { () => setDpr(1.5) } onDecline = { () => setDpr(0.5) } />
+        <Bvh firstHitOnly>
+          <scene />
+        </Bvh>
         <App started = { started } />
         <Preload all />
+        <AdaptiveDpr pixelated />
       </Canvas>
     </StrictMode>
 }

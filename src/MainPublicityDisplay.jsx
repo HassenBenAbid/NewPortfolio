@@ -3,6 +3,7 @@ import AboutMe from "./HtmlPages/AboutMe.jsx";
 import PublicityDisplay from "./modelsjs/PublicityDisplay.jsx";
 import { SelectedPage } from "./App.jsx";
 import { Vector3 } from "three";
+import { BakeShadows } from "@react-three/drei";
 
 const DISPLAY_POSITION = new Vector3(-16.5, 6, -13.5);
 
@@ -18,6 +19,7 @@ export default function MainPublicityDisplay( {pageSelected, setPageSelected, fo
         <PublicityDisplay scale    = { 2 }
                           position = { [DISPLAY_POSITION.x, -1.7, DISPLAY_POSITION.z] }
                           rotation = { [  0, Math.PI * -0.5, 0] } />
+        <BakeShadows />
 
         {/* We create a point light to make the illusion that the display is creating some light around itself. */}
         <pointLight position = { [DISPLAY_POSITION.x, 5, DISPLAY_POSITION.z] } intensity = { 8 } color = { "#DFDFDE" } />
