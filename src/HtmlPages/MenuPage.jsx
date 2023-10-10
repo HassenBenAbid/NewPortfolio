@@ -9,11 +9,11 @@ export default function MenuPage( { setPageSelected } )
         volume: DefaultParams.UI_SOUND_VOLUME
     });
 
-    return <Html className = "select-none w-[1125] h-[1600px]" 
+    return <Html className = "select-none w-[1125px] h-[1600px]" 
                  occlude   = "blending" 
                  zIndexRange = { [2, 2] } 
                  scale     = { 0.11 }
-                 rotation  = { [ Math.PI * -0.06, Math.PI * 0.25, Math.PI * 0.04] }
+                 rotation  = { [ Math.PI * -0.05, Math.PI * 0.2, Math.PI * 0.04] }
                  position  = { [0, 4.4, -0.1] }
                  style     = { {backgroundColor: "black"} }
                  transform>

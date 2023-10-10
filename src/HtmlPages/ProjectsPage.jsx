@@ -190,7 +190,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                 }
             </div>
 
-            { projectsState == ProjectsState.None ? <div style = { { opacity: showText ? 1 : 0 } } className = "flex justify-center text-5xl py-96 mb-24 text-communicator-white font-SpaceMono font-extrabold ">
+            { projectsState == ProjectsState.None ? <div style = { { opacity: showText ? 1 : 0 } } className = "flex justify-center text-[3.5em] py-[350px] mb-24 text-communicator-white font-SpaceMono font-extrabold ">
                                                         Choose what projects to check... 
                                                     </div> 
                                                   : null }
@@ -201,7 +201,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                              active:border-b-[0px]
                              transition-all duration-150 [box-shadow:0_8px_0_0_#c5262b,0_13px_0_0_#c5262b41]
                              mx-20 my-7 py-2.5' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
-                    <span className ='flex flex-col justify-center items-center h-[50px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
+                    <span className ='flex flex-col justify-center items-center h-[60px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
             </div>
 
         </Html>

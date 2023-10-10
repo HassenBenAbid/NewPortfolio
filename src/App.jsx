@@ -9,7 +9,7 @@ import MainMenuStand    from "./MainMenuStand.jsx";
 import MainPublicityDisplay from "./MainPublicityDisplay.jsx";
 import DefaultParams from "./DefaultParams.js";
 import useSound from "use-sound";
-import BackggroundSound from "./BackgroundSound.jsx";
+import { Stage } from "@react-three/drei";
 
 //An enum that help us determine what specifc page is currently selected.
 export const SelectedPage = {
@@ -61,20 +61,21 @@ export default function App({ started = false})
     }, [started]);
 
     return <>
-                <Perf    />
+                {/* <Perf    /> */}
                 <Effects />
 
                 {/* <BackggroundSound appStarted = { started } /> */}
-                
+
                 <ambientLight intensity = { 0.05 } />
 
                 <MainCamera position = { cameraPosition } target = { cameraTarget } pageSelected = { pageSelected } setCanSelect = { setCanSelect } setObjectIsFocused = { (state) => setObjectIsFocused(state) } />
+
                 <MainCantina />
                 <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
                 <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
                 <MainMenuStand        setPageSelected = { selectPage } />
 
-                <mesh position = { [0, -11.05, 0] } scale = { [45, 20, 45] } receiveShadow>
+                <mesh position = { [0, -11.05, 0] } scale = { [80, 20, 80] } receiveShadow>
                     <boxGeometry />
                     <meshStandardMaterial color = "sandybrown" />
                 </mesh>

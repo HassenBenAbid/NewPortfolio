@@ -9,7 +9,7 @@ export default function MainMenuStand( { setPageSelected } )
     return <>
 
         <group position   = { [-12.50, -1.20, 12] } >
-            <MenuStand scale = { 2.2 } rotation-y = {-Math.PI * 0.25}  />
+            <MenuStand scale = { 2.2 } rotation-y = {-Math.PI * 0.30}  />
             <BakeShadows />
             <MenuPage setPageSelected = { setPageSelected } />
         </group>

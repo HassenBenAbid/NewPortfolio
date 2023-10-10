@@ -12,6 +12,7 @@ export default function MainCamera({ position, target, pageSelected = SelectedPa
     const [ controlsEnabled, setControlsEnabled ] = useState(true); //This will allow us to choose when to allow the user to control the orbit controls and when we actually want to prevent that.
     const { camera, gl: { domElement } }          = useThree();
     const [ isMoving, setIsMoving ]               = useState(false);
+    const [ zoomLimit, setZoomLimit ]             = useState(60);
     const cameraRef                               = useRef();
 
     //This function will make sure to animate camera movement.
@@ -36,7 +37,14 @@ export default function MainCamera({ position, target, pageSelected = SelectedPa
     };
 
     //We set the up axis.
-    useEffect(() => { camera.up = new Vector3(0, 1, 0); }, []);
+    useEffect(() => 
+    { 
+        camera.up = new Vector3(0, 1, 0);
+
+        const changeZoomLimit = () => setZoomLimit(100 * window.innerHeight / window.innerWidth);
+        changeZoomLimit();
+        window.addEventListener('resize', changeZoomLimit);
+     }, []);
 
     //Each time the position or the target of the camera changes, we aniamte that movement.
     useEffect(() => {
@@ -49,7 +57,7 @@ export default function MainCamera({ position, target, pageSelected = SelectedPa
                           rotateSpeed   = { 0.5 }
                           maxZoom       = { 1 }
                           minDistance   = { !isMoving ? 30 : 0 }
-                          maxDistance   = { 60 }
+                          maxDistance   = { 80 }
                           enabled       = { controlsEnabled }
                           minPolarAngle = { !isMoving ? Math.PI * 0.2 : 0 }
                           maxPolarAngle = { !isMoving ? Math.PI * 0.4 : Math.PI }

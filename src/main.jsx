@@ -6,6 +6,8 @@ import { AdaptiveDpr, Bvh, PerformanceMonitor, Preload, useProgress }         fr
 import * as THREE from 'three';
 import "./index.css"
 import DefaultParams from "./DefaultParams.js";
+import BackgroundSound from "./BackgroundSound.jsx";
+import useSound from "use-sound";
 
 var loadingScreen  = document.getElementById("loadingScreen");
 var percentageText = document.getElementById("loadPercentage"); 
@@ -26,6 +28,9 @@ function Loading()
     const { progress }            = useProgress();
     const [ started, setStarted ] = useState(false);
     const [ dpr, setDpr ]         = useState(1);
+    const [ playStartSound ]      = useSound("./Sound/StartSound.wav", {
+      volume: DefaultParams.UI_SOUND_VOLUME - 0.1
+    });
 
     useEffect(() => {
       //We make sure that the transition btw 0 -> 100 is smooth.
@@ -47,7 +52,7 @@ function Loading()
             percentageText.style.fontStyle = "bold";
             percentageText.style.cursor    = "pointer";
             percentageText.classList.add("hover:text-[#F56C22]");
-            percentageText.onclick = () => { loadingScreen.classList.add("fadeOut"); setStarted(true); };
+            percentageText.onclick = () => { loadingScreen.classList.add("fadeOut"); playStartSound(); setStarted(true); };
           }
         } 
       }, 5);
@@ -66,5 +71,6 @@ function Loading()
         <Preload all />
         <AdaptiveDpr pixelated />
       </Canvas>
+      <BackgroundSound appStarted = { started } />
     </StrictMode>
 }

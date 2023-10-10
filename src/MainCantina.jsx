@@ -23,7 +23,7 @@ export default function MainCantina()
         <Lamp position = { [  14.59, 10.01, 12.03 ] } />
 
         {/*Led lamp*/}
-        <mesh position   = { [ -2.47, 1.67, 6.34 ] } 
+        <mesh position   = { [ -2.31, 1.67, 6.50 ] } 
               scale      = { [ 0.25, 5.2, 0.25 ] }  
               rotation-y = { Math.PI * 0.75 }>
 
