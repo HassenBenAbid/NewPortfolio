@@ -18,7 +18,7 @@ export const SelectedPage = {
     Projects: 2
 }
 
-export default function App({ started = false})
+export default function App({ started = false, setMusicIsPlaying})
 {
     const [ canSelect     , setCanSelect]         = useState(true);                                   //This determine whether the user will be able to select a page/object to focus or not.
     const [ pageSelected  , setPageSelected ]     = useState(SelectedPage.None);                      //This help us determine what page is currently in focus.
@@ -64,8 +64,6 @@ export default function App({ started = false})
                 {/* <Perf    /> */}
                 <Effects />
 
-                {/* <BackggroundSound appStarted = { started } /> */}
-
                 <ambientLight intensity = { 0.05 } />
 
                 <MainCamera position = { cameraPosition } target = { cameraTarget } pageSelected = { pageSelected } setCanSelect = { setCanSelect } setObjectIsFocused = { (state) => setObjectIsFocused(state) } />
@@ -73,7 +71,7 @@ export default function App({ started = false})
                 <MainCantina />
                 <MainCommunicator     pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
                 <MainPublicityDisplay pageSelected = { pageSelected } setPageSelected = { selectPage } focusObjectFunc = { focusObject } objectIsFocused = { objectIsFocused } focusedSound = { playObjectFocusedSound }  />
-                <MainMenuStand        setPageSelected = { selectPage } />
+                <MainMenuStand        setPageSelected = { selectPage } setMusicIsPlaying = { setMusicIsPlaying } />
 
                 <mesh position = { [0, -11.05, 0] } scale = { [80, 20, 80] } receiveShadow>
                     <boxGeometry />

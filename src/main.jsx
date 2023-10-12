@@ -25,10 +25,11 @@ root.render(
 //This small component will take care of showing the current percentage of the loading and making sure that it's a smooth animation.
 function Loading()
 {
-    const { progress }            = useProgress();
-    const [ started, setStarted ] = useState(false);
-    const [ dpr, setDpr ]         = useState(1);
-    const [ playStartSound ]      = useSound("./Sound/StartSound.wav", {
+    const { progress }                            = useProgress();
+    const [ started, setStarted ]                 = useState(false); //This will determine whether the user has hit the start nutton or not.
+    const [ musicIsPlaying, setMusicIsPlaying ]   = useState(true);  //This will determine whether the user has muted the music or not.
+    const [ dpr, setDpr ]                         = useState(1);
+    const [ playStartSound ]                      = useSound("./Sound/StartSound.wav", {
       volume: DefaultParams.UI_SOUND_VOLUME - 0.1
     });
 
@@ -67,10 +68,10 @@ function Loading()
         <Bvh firstHitOnly>
           <scene />
         </Bvh>
-        <App started = { started } />
+        <App started = { started } setMusicIsPlaying = { setMusicIsPlaying } />
         <Preload all />
         <AdaptiveDpr pixelated />
       </Canvas>
-      <BackgroundSound appStarted = { started } />
+      <BackgroundSound appStarted = { started } musicIsPlaying = { musicIsPlaying } />
     </StrictMode>
 }
