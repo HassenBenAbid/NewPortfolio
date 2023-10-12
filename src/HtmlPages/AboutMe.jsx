@@ -46,7 +46,7 @@ export default function AboutMe( { isFocused, onCloseCallback} )
                     {/* Clicking on this will allow the user to download my resume. */}
                     <a className="text-[5em] text-[#112A46] font-bold font-SpaceMono mt-14 mb-1 flex flex-col justify-center items-center border-x-[150px] border-[#112A46]
                       hover:border-x-[340px]
-                      translation-all duration-150" href="https://www.linkedin.com/in/hassen-ben-abid/" target="_blank" onClick = { () => playPublicityDisplaySound() }> 
+                      translation-all duration-150" href="./misc/Resume.pdf" target="_blank" onClick = { () => playPublicityDisplaySound() }> 
                         Resume 
                     </a>
                 </div>  
