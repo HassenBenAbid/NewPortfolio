@@ -1,4 +1,4 @@
-import { Perf } from "r3f-perf";
+//import { Perf } from "r3f-perf";
 import { useEffect, useState } from "react";
 import { Vector3 } from "three";
 import Effects          from "./Effects.jsx";
@@ -9,7 +9,6 @@ import MainMenuStand    from "./MainMenuStand.jsx";
 import MainPublicityDisplay from "./MainPublicityDisplay.jsx";
 import DefaultParams from "./DefaultParams.js";
 import useSound from "use-sound";
-import { Stage } from "@react-three/drei";
 
 //An enum that help us determine what specifc page is currently selected.
 export const SelectedPage = {
@@ -30,6 +29,11 @@ export default function App({ started = false, setMusicIsPlaying})
     const [ playObjectFocusedSound ] = useSound("./Sound/FocusObjectClick.wav", {
         volume: DefaultParams.UI_SOUND_VOLUME
     });
+
+    //A sound effect that plays when the player starts the app.
+    const [ playStartSound ]                      = useSound("./Sound/StartSound.wav", {
+        volume: DefaultParams.UI_SOUND_VOLUME - 0.1
+      });
 
     //Set the object that we want to focus, when null is passed then the camera will just get back to its standard position.
     var focusObject = (objectSelectedPos, xOffset = 0, zOffset = 0) => {
@@ -55,8 +59,9 @@ export default function App({ started = false, setMusicIsPlaying})
 
     useEffect(() => {
         if (started) {
-            setCanSelect(false);
-            setCameraPosition(DefaultParams.DEFAULT_CAMERA_POSITION);
+            playStartSound();                                         //Play the start sound.
+            setCanSelect(false);                                      //Prevent the player from selecting anything while the camra is moving.
+            setCameraPosition(DefaultParams.DEFAULT_CAMERA_POSITION); //Make a small camera movement.
         }
     }, [started]);
 

@@ -28,8 +28,8 @@ export default function BackgroundSound( { appStarted, musicIsPlaying } )
 
     return <>
     
-        <audio src="./Sound/Ambient.mp3"       ref = { ambientSound } loop = { true } />
-        <audio src="./Sound/CantinaMusic.mp3"  ref = { bgMusic }      loop = { true } />
+        <audio src="./Sound/Ambient.mp3"       ref = { ambientSound } loop = { true } autoPlay = { false } />
+        <audio src="./Sound/CantinaMusic.mp3"  ref = { bgMusic }      loop = { true } autoPlay = { false } />
     
     </>
 }

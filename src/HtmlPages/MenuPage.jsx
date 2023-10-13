@@ -24,8 +24,8 @@ export default function MenuPage( { setPageSelected, setMusicIsPlaying } )
                  occlude   = "blending" 
                  zIndexRange = { [2, 2] } 
                  scale     = { 0.11 }
-                 rotation  = { [ Math.PI * -0.05, Math.PI * 0.2, Math.PI * 0.04] }
-                 position  = { [0, 4.4, -0.1] }
+                 rotation  = { [ Math.PI * -0.045, Math.PI * 0.1, Math.PI * 0.012] }
+                 position  = { [0, 4.6, -0.075] }
                  style     = { {backgroundColor: "black"} }
                  transform>
 
@@ -43,7 +43,7 @@ export default function MenuPage( { setPageSelected, setMusicIsPlaying } )
             <div className="flex flex-row space-x-[250px] ml-[150px]">
                 <button className="flex">
                     <a href="https://www.linkedin.com/in/hassen-ben-abid/" target = "_blank" onClick = { () => playBoardClickSound() } >
-                        <img src="./UI/LinkedInIcon.png" className=" mt-[180px] scale-[3.5] scale duration-200 hover:scale-[4.5]" ></img>
+                        <img src="./UI/LinkedInIcon.png" className=" mt-[200px] scale-[3.5] scale duration-200 hover:scale-[4.5]" ></img>
                     </a>
                 </button>
                 <button className="flex">

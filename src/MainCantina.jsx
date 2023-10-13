@@ -1,7 +1,7 @@
-import Cantina      from "./modelsjs/Cantina";
-import Lamp         from "./Lamp.jsx";
+import Cantina                   from "./modelsjs/Cantina";
+import Lamp                      from "./Lamp.jsx";
 import { BakeShadows, Sparkles } from "@react-three/drei";
-import StreetLight  from "./StreetLight.jsx";
+import StreetLight               from "./StreetLight.jsx";
 
 //This is the main object of the scene (cantina/bar + street).
 export default function MainCantina()

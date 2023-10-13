@@ -2,12 +2,11 @@ import { React, StrictMode, useEffect, useState } from "react";
 import ReactDOM                         from "react-dom/client";
 import App                              from "./App.jsx"
 import { Canvas }                       from "@react-three/fiber";
-import { AdaptiveDpr, Bvh, PerformanceMonitor, Preload, useProgress }         from "@react-three/drei";
+import { AdaptiveDpr, Bvh, PerformanceMonitor, Preload, useProgress } from "@react-three/drei";
 import * as THREE from 'three';
 import "./index.css"
 import DefaultParams from "./DefaultParams.js";
 import BackgroundSound from "./BackgroundSound.jsx";
-import useSound from "use-sound";
 
 var loadingScreen  = document.getElementById("loadingScreen");
 var percentageText = document.getElementById("loadPercentage"); 
@@ -29,9 +28,6 @@ function Loading()
     const [ started, setStarted ]                 = useState(false); //This will determine whether the user has hit the start nutton or not.
     const [ musicIsPlaying, setMusicIsPlaying ]   = useState(true);  //This will determine whether the user has muted the music or not.
     const [ dpr, setDpr ]                         = useState(1);
-    const [ playStartSound ]                      = useSound("./Sound/StartSound.wav", {
-      volume: DefaultParams.UI_SOUND_VOLUME - 0.1
-    });
 
     useEffect(() => {
       //We make sure that the transition btw 0 -> 100 is smooth.
@@ -52,8 +48,8 @@ function Loading()
             percentageText.innerHTML       = "START";
             percentageText.style.fontStyle = "bold";
             percentageText.style.cursor    = "pointer";
+            percentageText.onclick         = () => { loadingScreen.classList.add("fadeOut"); setStarted(true); };
             percentageText.classList.add("hover:text-[#F56C22]");
-            percentageText.onclick = () => { loadingScreen.classList.add("fadeOut"); playStartSound(); setStarted(true); };
           }
         } 
       }, 5);
