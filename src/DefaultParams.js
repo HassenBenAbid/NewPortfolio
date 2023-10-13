@@ -1,5 +1,6 @@
 //All the default params of this app.
 const DefaultParams = {
+    DOMAIN_NAME             : "?origin=https://www.hassenbenabid.com/",
     DEFAULT_CAMERA_POSITION : {x: 0, y: 20, z: 50}, //The usualy default camera position when no object is focused.
     ON_START_CAMERA_POSITION: {x: 0, y: 20, z: 60}, //The position where the camera starts (To do a small movement effect at the start).
     UI_SOUND_VOLUME         : 0.5,                  //The volume of the UI sound (When clicking buttons).

@@ -16,7 +16,7 @@ const ProjectsState = {
 var ProProjects = [{ 
     title      : "Strange Loop Games: Programmer",
     period     : "06/2021 - Present",
-    videoLink  : "https://www.youtube.com/embed/ud_refZuQoA?rel=0",
+    videoLink  : "https://www.youtube.com/embed/ud_refZuQoA?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["Unity", "C#", "Scrum(ClickUp)"],
     description: ["- Implemented new features on both the client and server side like the whole tooltip system.", 
                   "- Reworked and helped reworking many different systems like the chat and the settlement systems.",
@@ -28,7 +28,7 @@ var ProProjects = [{
  }, {
     title      : "StolenPad Studio: Game developer",
     period     : "06/2021 - 08/2021",
-    videoLink  : "https://www.youtube.com/embed/0KgrstnQSOY?rel=0",
+    videoLink  : "https://www.youtube.com/embed/0KgrstnQSOY?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : [ "Unity", "C#"],
     description: ["- Prototyped and developed a new hyper-casual game every two weeks.",
                   "- Coordinated my work with both an artist and an animator.",
@@ -38,7 +38,7 @@ var ProProjects = [{
  }, {
     title      : "Amilcar Technologies: Game dev intern",
     period     : "01/2021 - 04/2021",
-    videoLink  : "https://www.youtube.com/embed/VsLKklKha0M?rel=0",
+    videoLink  : "https://www.youtube.com/embed/VsLKklKha0M?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["Unity", "C#"],
     description: ["- Implemented a base building system with a grid and some resource gathering and management.", 
                   "- Implemented a deck building system where the player unlocked and customized his multiple decks.",
@@ -50,7 +50,7 @@ var ProProjects = [{
 var PersonalProjects = [ {
     title      : "Cygnus3D: Small game engine",
     period     : "2019 - 2021",
-    videoLink  : "https://www.youtube.com/embed/Xr4G_if2Zms",
+    videoLink  : "https://www.youtube.com/embed/Xr4G_if2Zms" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["C++", "OpenGL"],
     description: ["- A small game engine that I developed using C++/OpenGL. It has a basic rendering, some physics implementation using the bullet library, a loading model system with skeletal animation and some basic lighting features. ",
                   "This was started as a way for me to understand the backbones of game engines but also as a challenge to push my boundaries and my understanding of computer science.",
@@ -59,7 +59,7 @@ var PersonalProjects = [ {
 }, {
     title      : "Untold Future: A Rogue-like game",
     period     : "2020",
-    videoLink  : "https://www.youtube.com/embed/A7fQHOdjjb4",
+    videoLink  : "https://www.youtube.com/embed/A7fQHOdjjb4" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["C#", "Unity"],
     description: ["- A rogue-like top down shooter where every new restart generates a new dungeon.",
                   "This was done by using BPS tree to create the boundaries of each room, then Delaunay triangulation to connect them and finally (with the help of some preset rules) the A* algorithm to create the corridors.",
@@ -80,7 +80,7 @@ var PersonalProjects = [ {
 }, {
     title      : "FearNot: 2D platformer game",
     period     : "2021",
-    videoLink  : "https://www.youtube.com/embed/hEGC3Xegj4Y",
+    videoLink  : "https://www.youtube.com/embed/hEGC3Xegj4Y" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["C#", "Unity"],
     description: ["- For this game I created nearly all the used assets.",
                   "- This game was a huge adventure for me where I experimented with many new features that I never touched before starting from actually making the pixel art myself, using ragdolls instead of death animation to make it more satisfying and finally some simple procedural generation.",
