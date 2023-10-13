@@ -176,7 +176,7 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
 
 
             {/* Create each project individually using all the stored information about them. */}
-            <div className="relativeflex flex-col space-y-6 mt-20">
+            <div className="relativeflex flex-col space-y-6 mt-20 mb-20">
                 { projectsState != ProjectsState.None ? CurrentlyShownProjects.map((value, index) => {
                                                                 return <Project key         = { index }
                                                                                 title       = { value.title } 
@@ -195,13 +195,14 @@ export default function ProjectsPage( { isFocused, onCloseCallback } )
                                                     </div> 
                                                   : null }
 
-
-            <div className ='button bg-communicator-red rounded-full cursor-pointer select-none
-                             active:translate-y-2  active:[box-shadow:0_4px_0_0_#c5262b,0_6px_0_0_#c5262b41]
-                             active:border-b-[0px]
-                             transition-all duration-150 [box-shadow:0_8px_0_0_#c5262b,0_13px_0_0_#c5262b41]
-                             mx-20 my-7 py-2.5' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
-                    <span className ='flex flex-col justify-center items-center h-[60px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
+            <div className=" fixed bottom-0">
+                <div className ='button bg-communicator-red rounded-full cursor-pointer select-none
+                                active:translate-y-2  active:[box-shadow:0_4px_0_0_#c5262b,0_6px_0_0_#c5262b41]
+                                active:border-b-[0px]
+                                transition-all duration-150 [box-shadow:0_8px_0_0_#c5262b,0_13px_0_0_#c5262b41]
+                                w-[310px] mb-7 py-2.5 ml-[700px]' onClick = { () =>  { playCommunicatorSound(); UpdateProjectsState(ProjectsState.None); } }>
+                        <span className ='flex flex-col justify-center items-center h-[60px] text-communicator-white font-bold text-5xl'>POWER OFF</span>
+                </div>
             </div>
 
         </Html>
