@@ -15,7 +15,7 @@ const ProjectsState = {
 //All the information about my professional projects.
 var ProProjects = [{ 
     title      : "Strange Loop Games: Programmer",
-    period     : "06/2021 - Present",
+    period     : "06/2021 - 07/2024",
     videoLink  : "https://www.youtube.com/embed/ud_refZuQoA?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["Unity", "C#", "Scrum(ClickUp)"],
     description: ["- Implemented new features on both the client and server side like the whole tooltip system.", 
