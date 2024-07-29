@@ -5,6 +5,7 @@ import ProjectsPage     from "./HtmlPages/ProjectsPage.jsx";
 import Communicator     from "./modelsjs/Communicator.jsx";
 import { SelectedPage } from "./App.jsx"
 import { BakeShadows } from "@react-three/drei";
+import { viewportResolution } from "three/examples/jsm/nodes/Nodes.js";
 
 //The default position and rotation of the communicator group.
 var DEFAULT_POSITION = new Vector3(-0.62, 3.55, 5.58);
@@ -42,8 +43,7 @@ export default function MainCommunicator( { pageSelected, setPageSelected, focus
 
     useEffect(() => {
         //When the selected page is the projects (the communicator object), then we should set this object as the focus of teh camera.
-        if (pageSelected == SelectedPage.Projects) focusObjectFunc(ANIMATED_POSITION, 0, 4.5); 
-
+        if (pageSelected == SelectedPage.Projects) focusObjectFunc(ANIMATED_POSITION, 0, window.innerWidth / window.innerHeight >= 0.5 ? 4.5 : 5); 
         updateRotation();
     }, [pageSelected])
 

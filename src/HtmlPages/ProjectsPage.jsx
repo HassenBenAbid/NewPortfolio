@@ -18,11 +18,12 @@ var ProProjects = [{
     period     : "06/2021 - 07/2024",
     videoLink  : "https://www.youtube.com/embed/ud_refZuQoA?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : ["Unity", "C#", "Scrum(ClickUp)"],
-    description: ["- Implemented new features on both the client and server side like the whole tooltip system.", 
-                  "- Reworked and helped reworking many different systems like the chat and the settlement systems.",
+    description: ["- Led the rework of the tooltip system, delivering it before the deadline and receiving recognition.",
+                  "- Optimized various game systems on both the server and client sides, including the chat system and most importantly some of the game UI, resulting in at least a 50% faster and more fluid user experience.",
+                  "- Implemented multiple new features, such as a territory system and a simulation of towns and countries.",
                   "- Benchmarked and optimized a large chunk of the legacy code using both the .NET benchmark library and the unity profiler.",
-                  "- Took the responsibility of mentoring a new intern and introducing him to our code base which later became an integral part of the team.",
-                  "- Constantly debugged and fixed bugs and crashes in record time.",
+                  "- Took the responsibility of mentoring a new intern.",
+                  "- Resolved daily bugs promptly, enhancing team productivity.",
                   "- Worked in an agile environment with an international team (used ClickUp)."],
     gitLink    : null
  }, {
@@ -30,10 +31,11 @@ var ProProjects = [{
     period     : "06/2021 - 08/2021",
     videoLink  : "https://www.youtube.com/embed/0KgrstnQSOY?rel=0" + DefaultParams.DOMAIN_NAME,
     techUsed   : [ "Unity", "C#"],
-    description: ["- Prototyped and developed a new hyper-casual game every two weeks.",
-                  "- Coordinated my work with both an artist and an animator.",
-                  "- Tested games on both android and iOS.",
-                  "- Implemented different APIs to track the player progression and game statistics."],
+    description: ["- Rapidly prototyped and developed hyper-casual games on a bi-weekly basis.",
+                  "- Collaborated closely with the art team for a seamless integration of game assets including animations, sound effects,...",
+                  "- Conducted testing on Android and iOS platforms.",
+                  "- Optimized games performances and memory usage.",
+                  "- Implemented various APIs to track player progression and game statistics."],
     gitLink    : null
  }, {
     title      : "Amilcar Technologies: Game dev intern",
