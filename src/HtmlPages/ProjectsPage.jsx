@@ -50,6 +50,16 @@ var ProProjects = [{
 
 //All the information about my personal projects
 var PersonalProjects = [ {
+    title       : "GrayZone : Unreal Engine 5 Project",
+    period      : "2024 - present",
+    videoLink   : "https://www.youtube.com/embed/SFkI-FfZZA8?si=K8lX3x4aUI1moDxN",
+    techUsed    : ["C++", "Unreal Engine 5"],
+    description : ["- A rogue-lite game currently in development, drawing inspiration from titles like Hades and from comic books. The game's concept and mechanics continue to evolve as development progresses.",
+                   "- As a foundational step, I've completed work on procedural dungeon generation. This system allows for controlled generation of dungeons, with the ability to specify parameters such as the number and size of rooms, the different rooms that we want to spawn and their chance of spawning, etc. Additionally, it's designed to accommodate future features if needed.",
+                   "- One key aspect of gameplay revolves around map destruction, leading to the implementation of various types of walls: indestructible, hard-to-destroy, and easy-to-destroy. These walls are currently visually differentiated by color, with darker shades indicating higher durability. Additionally, player will spawn in green room and aim to reach red room to exit the dungeon."
+    ],
+    gitLink     : "https://github.com/SpaCygnus-Inc/GrayZone"
+}, {
     title      : "Cygnus3D: Small game engine",
     period     : "2019 - 2021",
     videoLink  : "https://www.youtube.com/embed/Xr4G_if2Zms" + DefaultParams.DOMAIN_NAME,
