@@ -13,7 +13,18 @@ const ProjectsState = {
 }
 
 //All the information about my professional projects.
-var ProProjects = [{ 
+var ProProjects = [{
+    title      : "JGonzalez Studio: Technical Lead",
+    period     : "09/2024 - Present",
+    videoLink  : "https://www.youtube.com/embed/D--v8ByXAzE?rel=0" + DefaultParams.DOMAIN_NAME,
+    techUsed   : ["Unity", "C#", "Firebase"],
+    description: ["- Led a team of 2 engineers in the development of the studio’s first game, defining technical architecture, coding standards, and gameplay systems.",
+                  "- Integrated Firebase services including analytics, push notifications and ad monetization. ",
+                  "- Managed the Google Play release pipeline, including builds, publishing, and store compliance.",
+                  "- Collaborated with designers to refine the game concept.",
+                  "- Coordinated cross-team communication and guided the project through key technical and production challenges."],
+    gitLink    : null
+}, { 
     title      : "Strange Loop Games: Programmer",
     period     : "06/2021 - 07/2024",
     videoLink  : "https://www.youtube.com/embed/ud_refZuQoA?rel=0" + DefaultParams.DOMAIN_NAME,
@@ -51,7 +62,7 @@ var ProProjects = [{
 //All the information about my personal projects
 var PersonalProjects = [ {
     title       : "GrayZone : Unreal Engine 5 Project",
-    period      : "2024 - present",
+    period      : "2024",
     videoLink   : "https://www.youtube.com/embed/SFkI-FfZZA8?si=K8lX3x4aUI1moDxN",
     techUsed    : ["C++", "Unreal Engine 5"],
     description : ["- A rogue-lite game currently in development, drawing inspiration from titles like Hades and from comic books. The game's concept and mechanics continue to evolve as development progresses.",
